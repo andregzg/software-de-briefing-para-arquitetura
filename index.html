@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Software de Briefing para Arquitetura</title>
+</head>
+<body>
+    <h1>Bem-vindo ao Software de Briefing para Arquitetura</h1>
+    <h2>Selecione uma opção:</h2>
+    <ul>
+        <li>
+            <input type="radio" name="estilo" value="10">
+            <label for="estilo">Estilo moderno</label>
+        </li>
+        <li>
+            <input type="radio" name="estilo" value="5">
+            <label for="estilo">Estilo tradicional</label>
+        </li>
+        <li>
+            <input type="radio" name="estilo" value="8">
+            <label for="estilo">Estilo minimalista</label>
+        </li>
+    </ul>
+    
+    <h2>Selecione a opção de cores:</h2>
+    <ul>
+        <li>
+            <input type="radio" name="cores" value="8">
+            <label for="cores">Cores vibrantes</label>
+        </li>
+        <li>
+            <input type="radio" name="cores" value="5">
+            <label for="cores">Cores neutras</label>
+        </li>
+    </ul>
+    
+    <h2>Selecione as opções de móveis:</h2>
+    <ul>
+        <li>
+            <input type="radio" name="moveis" value="9">
+            <label for="moveis">Móveis modernos</label>
+        </li>
+        <li>
+            <input type="radio" name="moveis" value="6">
+            <label for="moveis">Móveis clássicos</label>
+        </li>
+    </ul>
+    
+    <button onclick="calcularResultado()">Próximo</button>
+    
+    <div id="resultado"></div>
+    
+    <script>
+        function calcularResultado() {
+            var opcaoEstilo = document.querySelector('input[name="estilo"]:checked');
+            if (opcaoEstilo) {
+                var resultado = parseInt(opcaoEstilo.value);
+                document.getElementById("resultado").innerHTML = "Você escolheu o estilo " + opcaoEstilo.nextElementSibling.textContent + "<br>";
+                
+                var opcaoCores = document.querySelector('input[name="cores"]:checked');
+                if (opcaoCores) {
+                    resultado += parseInt(opcaoCores.value);
+                    document.getElementById("resultado").innerHTML += "Você escolheu " + opcaoCores.nextElementSibling.textContent + "<br>";
+                    
+                    var opcaoMoveis = document.querySelector('input[name="moveis"]:checked');
+                    if (opcaoMoveis) {
+                        resultado += parseInt(opcaoMoveis.value);
+                        document.getElementById("resultado").innerHTML += "Você escolheu " + opcaoMoveis.nextElementSibling.textContent + "<br>";
+                        
+                        document.getElementById("resultado").innerHTML += "Calculando os resultados...<br>";
+                        document.getElementById("resultado").innerHTML += "Baseado nas suas escolhas, o resultado final é: " + resultado;
+                    } else {
+                        document.getElementById("resultado").innerHTML += "Selecione uma opção de móveis.";
+                    }
+                } else {
+                    document.getElementById("resultado").innerHTML += "Selecione uma opção de cores.";
+                }
+            } else {
+                document.getElementById("resultado").innerHTML += "Selecione uma opção de estilo.";
+            }
+        }
+    </script>
+</body>
+</html>
